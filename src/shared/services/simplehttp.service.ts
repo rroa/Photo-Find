@@ -11,6 +11,7 @@ export class SimpleHttp {
   }
 
   get() {
+    // return this.http.get('/api') <- with proxy
     return this.http.get('https://randomuser.me/api/?results=10')
       .map((response: Response) => {
         return response.json();

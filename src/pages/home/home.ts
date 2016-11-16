@@ -8,6 +8,7 @@ import { Camera } from 'ionic-native';
 
 //
 import { SimpleHttp } from '../../shared/services/include'
+import { AboutPage } from '../about/about'
 
 // 3rd Party
 
@@ -23,6 +24,10 @@ export class HomePage {
     public sanitizer: DomSanitizer,
     public httpApi: SimpleHttp
   ) { }
+
+  navigateToAbout() {
+    this.navCtrl.push(AboutPage);
+  }
 
   makeRequest() {
     this.httpApi.get().subscribe(
