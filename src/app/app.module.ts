@@ -4,7 +4,6 @@ import { MyApp } from './app.component';
 
 // Pages
 import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 
@@ -14,8 +13,8 @@ import { SimpleHttp } from '../shared/services/include'
 @NgModule({
   declarations: [
     MyApp,
+    // Pages
     AboutPage,
-    ContactPage,
     HomePage,
     TabsPage
   ],
@@ -25,8 +24,8 @@ import { SimpleHttp } from '../shared/services/include'
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+    // Pages
     AboutPage,
-    ContactPage,
     HomePage,
     TabsPage
   ],
