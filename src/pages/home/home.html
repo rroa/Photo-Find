@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h2>Hello Ionic + TypeScript + Angular2</h2>
+  <button ion-button full (click)="makeRequest()">Make Request</button>
+  <button ion-button (click)="takePicture()">Camera</button>
+  <p>
+    <img *ngIf="base64Image" [src]="base64Image" />
+  </p>
+  <ion-list>
+    <ion-item *ngFor="let person of people; let i = index">
+      <ion-avatar item-left>
+        <img src="{{ person.picture.thumbnail }}">
+      </ion-avatar>
+      <h2>{{ person.name.title }} {{ person.name.first }} {{ person.name.last }}</h2>
+      <p>{{ person.email }}</p>
+    </ion-item>
+  </ion-list>
+</ion-content>
