@@ -8,7 +8,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 @Component({
   template: `<ion-nav [root]="rootPage"></ion-nav>`
 })
-export class MyApp {
+export class PhotoFind {
   rootPage = TabsPage;
 
   constructor(platform: Platform) {
@@ -17,8 +17,6 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();
       Splashscreen.hide();
-
-      console.log('Hello from TypeScript');
     });
   }
 }

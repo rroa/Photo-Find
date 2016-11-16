@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 import { IonicApp, IonicModule } from 'ionic-angular';
-import { MyApp } from './app.component';
+import { PhotoFind } from './app.component';
 
 // Pages
 import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 
@@ -13,20 +12,20 @@ import { SimpleHttp } from '../shared/services/include'
 
 @NgModule({
   declarations: [
-    MyApp,
+    PhotoFind,
+    // Pages
     AboutPage,
-    ContactPage,
     HomePage,
     TabsPage
   ],
   imports: [
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(PhotoFind)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
+    PhotoFind,
+    // Pages
     AboutPage,
-    ContactPage,
     HomePage,
     TabsPage
   ],
