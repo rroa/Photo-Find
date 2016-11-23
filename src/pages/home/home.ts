@@ -32,6 +32,14 @@ export class HomePage {
     });
   }
 
+  ionViewDidLoad() {
+    console.log('authenticated', this.auth.authenticated());
+    if(this.auth.authenticated()) {
+      console.log('authenticated');
+      this.test = true;
+    }
+  }
+
   addImage() {
     let options = this.actionSheetCtrl.create({
       title: 'Select an Image',

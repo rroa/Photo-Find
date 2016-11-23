@@ -9,7 +9,7 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding>
-  <div *ngIf="test && auth.authenticated()">
+  <div *ngIf="auth.authenticated()">
     <ion-card>
       <ion-item *ngIf="auth.user">
         <ion-avatar item-left>
