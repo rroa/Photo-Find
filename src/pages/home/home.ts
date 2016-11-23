@@ -7,7 +7,7 @@ import { NavController, ActionSheetController, ToastController, Events } from 'i
 import { Camera } from 'ionic-native';
 
 // Providers
-import { AuthService } from '../../shared/services/include'
+import { AuthService, SimpleHttp } from '../../shared/services/include'
 
 @Component({
   selector: 'page-home',
@@ -24,7 +24,8 @@ export class HomePage {
     public sanitizer: DomSanitizer,
     private auth: AuthService,
     private toastCtrl: ToastController,
-    public events: Events
+    public events: Events,
+    public api: SimpleHttp
   ) {
     events.subscribe('user:authenticated', (userEventData) => {
       this.test = true;
@@ -34,23 +35,55 @@ export class HomePage {
     });
   }
 
+  secure() {
+    this.api.secureGet().subscribe(
+      data => {
+        console.log('success');
+        console.log('data', data.results);
+        // this.people = data.results;
+      },
+      err => {
+        // Uh Oh
+        console.log('err', err);
+      },
+      () => {
+        console.log('complete');
+      });
+  }
+
+  unsecure() {
+    this.api.get().subscribe(
+      data => {
+        console.log('success');
+        console.log('data', data.results);
+        // this.people = data.results;
+      },
+      err => {
+        // Uh Oh
+        console.log('err', err);
+      },
+      () => {
+        console.log('complete');
+      });
+  }
+
   presentToast() {
-  let toast = this.toastCtrl.create({
-    message: 'Login was successful',
-    duration: 3000,
-    position: 'bottom'
-  });
+    let toast = this.toastCtrl.create({
+      message: 'Login was successful',
+      duration: 3000,
+      position: 'bottom'
+    });
 
-  toast.onDidDismiss(() => {
-    console.log('Dismissed toast');
-  });
+    toast.onDidDismiss(() => {
+      console.log('Dismissed toast');
+    });
 
-  toast.present();
-}
+    toast.present();
+  }
 
   ionViewDidLoad() {
     console.log('authenticated', this.auth.authenticated());
-    if(this.auth.authenticated()) {
+    if (this.auth.authenticated()) {
       console.log('authenticated');
       this.test = true;
     }

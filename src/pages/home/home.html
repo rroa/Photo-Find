@@ -9,6 +9,8 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding>
+  <button ion-button (click)="unsecure()">Un-Secure</button>
+  <button ion-button (click)="secure()">Secure</button>
   <div *ngIf="auth.authenticated()">
     <ion-card>
       <ion-item *ngIf="auth.user">
