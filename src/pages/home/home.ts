@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 
 // Ionic
-import { NavController, ActionSheetController, Events } from 'ionic-angular';
+import { NavController, ActionSheetController, ToastController, Events } from 'ionic-angular';
 import { Camera } from 'ionic-native';
 
 // Providers
@@ -23,14 +23,30 @@ export class HomePage {
     public actionSheetCtrl: ActionSheetController,
     public sanitizer: DomSanitizer,
     private auth: AuthService,
+    private toastCtrl: ToastController,
     public events: Events
   ) {
     events.subscribe('user:authenticated', (userEventData) => {
       this.test = true;
       // userEventData is an array of parameters, so grab our first and only arg
       console.log('Welcome', userEventData);
+      this.presentToast();
     });
   }
+
+  presentToast() {
+  let toast = this.toastCtrl.create({
+    message: 'Login was successful',
+    duration: 3000,
+    position: 'bottom'
+  });
+
+  toast.onDidDismiss(() => {
+    console.log('Dismissed toast');
+  });
+
+  toast.present();
+}
 
   ionViewDidLoad() {
     console.log('authenticated', this.auth.authenticated());
