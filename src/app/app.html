@@ -1,11 +1,20 @@
 <ion-menu id="login" [content]="content">
     <ion-content>
-        <ion-list>
+        <ion-list inset>
             <ion-list-header>
                 Authenticate
+                <p>
+                    <img src="assets/img/profile.jpg" />
+                </p>
             </ion-list-header>
-            <button ion-item menuClose color="primary" (click)="authenticate()">
+            <button *ngIf="!auth.authenticated()" ion-item menuClose color="primary" (click)="auth.login()">
                 <ion-icon item-left name="logo-facebook"></ion-icon>
+                Login with Facebook
+            </button>
+            <button ion-item block menuClose detail-none>
+                Login with Facebook
+            </button>
+            <button ion-item menuClose detail-none>
                 Login with Facebook
             </button>
         </ion-list>
