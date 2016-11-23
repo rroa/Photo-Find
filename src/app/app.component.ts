@@ -4,6 +4,8 @@ import { StatusBar, Splashscreen } from 'ionic-native';
 
 import { TabsPage } from '../pages/tabs/tabs';
 
+// providers
+import { AuthService } from '../shared/services/include'
 
 @Component({
   templateUrl: 'app.html'
@@ -12,7 +14,7 @@ export class PhotoFind {
   authenticated: boolean = false;
   rootPage = TabsPage;
 
-  constructor(platform: Platform, public menuCtrl: MenuController) {
+  constructor(platform: Platform, public menuCtrl: MenuController, private auth: AuthService) {
     // Activate menu
     this.activateMenu();
 
@@ -29,10 +31,10 @@ export class PhotoFind {
     this.menuCtrl.enable(!this.authenticated, 'login');
   }
 
-  authenticate() {
-    this.authenticated = true;
-    this.menuCtrl.close('login');    
-    this.activateMenu();
-    console.log('click', 'authenticate');
-  }
+  // authenticate() {
+  //   this.authenticated = true;
+  //   this.menuCtrl.close('login');    
+  //   this.activateMenu();
+  //   console.log('click', 'authenticate');
+  // }
 }

@@ -3,8 +3,11 @@ import { Component } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 
 // Ionic
-import { NavController, ActionSheetController } from 'ionic-angular';
+import { NavController, ActionSheetController, Events } from 'ionic-angular';
 import { Camera } from 'ionic-native';
+
+// Providers
+import { AuthService } from '../../shared/services/include'
 
 @Component({
   selector: 'page-home',
@@ -13,13 +16,20 @@ import { Camera } from 'ionic-native';
 export class HomePage {
   // public
   public base64Image: string;
+  public test: boolean = false;
 
   constructor(
     public navCtrl: NavController,
     public actionSheetCtrl: ActionSheetController,
-    public sanitizer: DomSanitizer
+    public sanitizer: DomSanitizer,
+    private auth: AuthService,
+    public events: Events
   ) {
-
+    events.subscribe('user:authenticated', (userEventData) => {
+      this.test = true;
+      // userEventData is an array of parameters, so grab our first and only arg
+      console.log('Welcome', userEventData);
+    });
   }
 
   addImage() {
